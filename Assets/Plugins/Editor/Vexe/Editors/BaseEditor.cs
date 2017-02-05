@@ -113,6 +113,11 @@ namespace Vexe.Editor.Editors
 
         private void OnEnable()
         {
+			if (target == null)
+			{
+				Debug.Log("avoid a null access in here");
+				return;
+			}
             if (prefs == null)
             {
                 var t0 = target as BaseBehaviour;
