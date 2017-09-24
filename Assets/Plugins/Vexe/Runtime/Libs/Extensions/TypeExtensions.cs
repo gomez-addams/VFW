@@ -27,7 +27,7 @@ namespace Vexe.Runtime.Extensions
             }
 
             if (!type.IsIList())
-            { 
+            {
                 element = null;
                 return false;
             }

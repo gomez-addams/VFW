@@ -7,10 +7,12 @@ namespace Vexe.Runtime.Extensions
 {
     public static class MemberInfoExtensions
     {
+#if !UNITY_2017_1_OR_NEWER
         public static bool IsDefined(this MemberInfo minfo, Type type)
         {
             return minfo.IsDefined(type, false);
         }
+#endif
 
         /// <summary>
         /// Returns true if the attribute whose type is specified by the generic argument is defined on this member
@@ -57,6 +59,7 @@ namespace Vexe.Runtime.Extensions
             return GetDataType(memberInfo, null);
         }
 
+#if !UNITY_2017_1_OR_NEWER
         /// <summary>
         /// Returns the first found custom attribute of type T on this member
         /// Returns null if none was found
@@ -75,7 +78,7 @@ namespace Vexe.Runtime.Extensions
         {
             return GetCustomAttribute<T>(member, false);
         }
-
+#endif
         public static IEnumerable<T> GetCustomAttributes<T>(this MemberInfo member) where T : Attribute
         {
             return GetCustomAttributes<T>(member, false);
@@ -104,6 +107,7 @@ namespace Vexe.Runtime.Extensions
             return result.ToTitleCase().SplitPascalCase();
         }
 
+#if !UNITY_2017_1_OR_NEWER
         public static bool IsStatic(this MemberInfo member)
         {
             var field = member as FieldInfo;
@@ -124,5 +128,6 @@ namespace Vexe.Runtime.Extensions
 
             throw new NotSupportedException(message);
         }
+#endif
     }
 }

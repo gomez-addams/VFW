@@ -11,7 +11,7 @@ namespace Vexe.Editor.Drawers
 {
 	public class AssignableDrawer : CompositeDrawer<object, AssignableAttribute>
 	{
-		private int kFoldout, kTarget, kMember, kSource;
+		private int /* kFoldout, */ kTarget, kMember, kSource;
 		private int targetIdx, memberIdx;
 		private GameObject source;
 		private Component target;
@@ -21,7 +21,7 @@ namespace Vexe.Editor.Drawers
 		{
 			var iden = RuntimeHelper.CombineHashCodes(id, attribute.GetType());
 			kSource  = RuntimeHelper.CombineHashCodes(iden, "src");
-			kFoldout = RuntimeHelper.CombineHashCodes(iden, "foldout");
+			//kFoldout = RuntimeHelper.CombineHashCodes(iden, "foldout");
 			kTarget  = RuntimeHelper.CombineHashCodes(iden, "target");
 			kMember  = RuntimeHelper.CombineHashCodes(iden, "member");
 

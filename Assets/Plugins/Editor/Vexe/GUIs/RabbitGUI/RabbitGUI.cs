@@ -133,7 +133,7 @@ namespace Vexe.Editor.GUIs
             StoreValidRect();
         }
 
-        void OnPlaymodeChanged()
+        void OnPlaymodeChanged(PlayModeStateChange change)
         {
             StoreValidRect();
         }
@@ -222,13 +222,15 @@ namespace Vexe.Editor.GUIs
 
         public override void OnEnable()
         {
-            EditorApplication.playmodeStateChanged += OnPlaymodeChanged;
+            EditorApplication.playModeStateChanged += OnPlaymodeChanged;
+            //EditorApplication.playmodeStateChanged += OnPlaymodeChanged;
             EditorApplication.update += OnEditorUpdate;
         }
 
         public override void OnDisable()
         {
-            EditorApplication.playmodeStateChanged -= OnPlaymodeChanged;
+            EditorApplication.playModeStateChanged -= OnPlaymodeChanged;
+            //EditorApplication.playmodeStateChanged -= OnPlaymodeChanged;
             EditorApplication.update -= OnEditorUpdate;
         }
 
@@ -970,7 +972,7 @@ namespace Vexe.Editor.GUIs
 
             Rect position;
             if (CanDrawControl(out position, data))
-                EditorGUI.MinMaxSlider(label, position, ref minValue, ref maxValue, minLimit, maxLimit);
+                EditorGUI.MinMaxSlider(position, label, ref minValue, ref maxValue, minLimit, maxLimit);
         }
     }
 }
